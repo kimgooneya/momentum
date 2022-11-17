@@ -4,6 +4,9 @@ const toDoList = document.getElementById("todo-list");
 
 const toDos = [];
 
+const TODOS_KEY="todos";
+
+
 function saveToDos() {
     localStorage.setItem("todos", JSON.stringify(toDos));
 }
@@ -35,3 +38,11 @@ function handleToDoSubmit(event) {
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
+
+const savedToDos = localStorage.getItem(TODOS_KEY);
+console.log(savedToDos);
+
+if(savedToDos !== null){
+    const parsedToDos = JSON.parse(savedToDos);
+    parsedToDos.forEach((item) => console.log("this is the turn of ", item));
+}
